@@ -6,22 +6,18 @@ import * as schema from "./schema.js";
 
 const connectionString = process.env.DATABASE_URL;
 
+// 🛑 SÉCURITÉ : Si la variable est vide, on arrête tout de suite !
 if (!connectionString) {
-  throw new Error("DATABASE_URL is not defined in your environment variables.");
+  throw new Error("DATABASE_URL n'est pas définie. Vérifie ton fichier .env ou ta configuration Docker.");
 }
 
-// Fonction pour initialiser la bonne instance de base de données
 const initDb = () => {
-  // Si on est en production ou que l'URL contient l'hôte de Neon
-  if (process.env.NODE_ENV === "production" || connectionString.includes("neon.tech")) {
+  if (connectionString.includes("neon.tech")) {
     const client = neon(connectionString);
     return drizzleNeon({ client, schema });
   } 
   
-  // Sinon, on utilise le client standard pour Docker en local
-  const pool = new pg.Pool({
-    connectionString: connectionString,
-  });
+  const pool = new pg.Pool({ connectionString });
   return drizzle({ client: pool, schema });
 };
 
