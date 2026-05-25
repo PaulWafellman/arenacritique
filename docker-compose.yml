@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres_dev:
+    image: postgres:16-alpine
+    container_name: mon_projet_postgres_local
+    environment:
+      POSTGRES_USER: paul
+      POSTGRES_PASSWORD: wafellman
+      POSTGRES_DB: dbcritique
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_local_data:/var/lib/postgresql/data
+
+volumes:
+  pg_local_data:
