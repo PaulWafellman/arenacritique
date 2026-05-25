@@ -4,10 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "node --import tsx src/index.ts",
-    "clean": "rm -rf dist",
+    "dev": "next dev",
     "build": "next build",
-    "start": "NODE_ENV=production node dist/index.js",
+    "start": "next start",
     "lint": "next lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "gen-auth": "better-auth generate --output ./src/db/auth-schema.ts"
