@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Mon Projet Arena',
+  title: 'Mon Projet',
   description: 'Setup Docker + Drizzle + Better Auth',
 }
 
