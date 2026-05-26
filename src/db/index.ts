@@ -6,7 +6,6 @@ import * as schema from "./schema.js";
 
 const connectionString = process.env.DATABASE_URL;
 
-// 🛑 SÉCURITÉ : Si la variable est vide, on arrête tout de suite !
 if (!connectionString) {
   throw new Error("DATABASE_URL n'est pas définie. Vérifie ton fichier .env ou ta configuration Docker.");
 }
